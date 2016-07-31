@@ -1,0 +1,25 @@
+{
+  "name": "site-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "site/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ewic/site-framework.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ewic/site-framework/issues"
+  },
+  "homepage": "https://github.com/ewic/site-framework#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "connect": "^3.4.1",
+    "jquery": "^3.1.0",
+    "serve-static": "^1.11.1"
+  }
+}
