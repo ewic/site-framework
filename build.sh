@@ -22,6 +22,8 @@ echo "CSS Deployed"
 
 echo "Deploying Fonts"
 
+mkdir -p ./site/lib/fonts/
+
 cp ./node_modules/bootstrap/dist/fonts/* ./site/lib/fonts/
 
 echo "Fonts Deployed"
