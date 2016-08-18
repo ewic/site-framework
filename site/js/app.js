@@ -21,27 +21,63 @@ require.config({
 });
 
 define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone, Mustache) {
+	var Router = Backbone.Router.extend({
+		//Make the router to do the thing.
+
+		
+	});
+
+	var PostModel = Backbone.Model.extend({
+		defaults: {
+			date: Date.now(),
+			last_updated: Date.now(),
+			contents: $('#tpl-model-default').html(),
+		},
+
+		initialize: function(post_id) {
+			console.log("Post Model created");
+
+			//Init the post model by retrieving the post data from the server
+			// and loading it into the model.
+		},
+	});
+
 	var EditorView = Backbone.View.extend({
 		el: '#site-content',
 		tagName: 'div',
 		className: 'editor',
 
-		template: Mustache.render($('#tpl-editor').html()),
+		template: ($('#tpl-editor').html()),
 
 		events: {
 			'keyup': 'changeText',
 		},
 
 		initialize: function() {
-			this.render();
 			console.log("editor view made");
+			this.render();
+
+			console.log(this.model.get("contents"));
+
+			this.editor_pane = $("#editor");
+			this.preview_pane = $("#preview");
 		},
 
 		changeText: function() {
 			console.log("keyup triggered");
-			$('#preview').html(this.$el.html());
+			this.model.set("contents", this.editor_pane.html());
+
+			this.preview_pane.html(this.editor_pane.html());
+		},
+
+		render: function() {
+			//rendered = Mustache.to_html(view.template, view.model.toJSON());
+			rendered = Mustache.to_html(this.template, this.model.toJSON());
+			$(this.el).html(rendered);
 		},
 	});
 
-	var editor = new EditorView;
+	var router = new Router;
+	var post = new PostModel;
+	var editor = new EditorView({model: post});
 });

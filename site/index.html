@@ -45,7 +45,15 @@
 </html>
 
 <script type="text/html" id="tpl-editor">
-  <div id="editor" contenteditable="true">
-    EDITOR
+  <div class="col-sm-6" id="editor" contenteditable="true">
+    {{contents}}
   </div>
+  <div class="col-sm-6" id="preview">
+    {{contents}}
+  </div>
+</script>
+
+<script type="text/html" id="tpl-model-default">
+# Welcome to the editor!
+This is a *markdown editor* for your browser.
 </script>
