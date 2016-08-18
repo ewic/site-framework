@@ -21,63 +21,46 @@ require.config({
 });
 
 define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone, Mustache) {
+	var self = this;
+
 	var Router = Backbone.Router.extend({
-		//Make the router to do the thing.
+		// App routes
+		routes: {
+			"editor": "editor",
+			"*path": "defaultRoute",
+		},
 
-		
+		editor: function() {
+			console.log("Editor");
+
+			this.set_title("Editor");
+
+			require(['js/views/editor', 'js/models/post'], function(EditorView, PostModel) {
+				var post = new PostModel;
+				self.view = new EditorView({model: post});
+			});
+		},
+
+		defaultRoute: function() {
+			console.log("defaultRoute");
+
+			require(['js/views/nav'], function(NavView) {
+				var nav = new NavView;
+			});
+
+			require(['js/views/index'], function(IndexView) {
+				var index = new IndexView;
+			});
+		},
+
+		set_title: function(title) {
+			$('.navbar-brand').html(title);
+			$('title').html(title+' | ewic.us');
+		}
 	});
 
-	var PostModel = Backbone.Model.extend({
-		defaults: {
-			date: Date.now(),
-			last_updated: Date.now(),
-			contents: $('#tpl-model-default').html(),
-		},
-
-		initialize: function(post_id) {
-			console.log("Post Model created");
-
-			//Init the post model by retrieving the post data from the server
-			// and loading it into the model.
-		},
-	});
-
-	var EditorView = Backbone.View.extend({
-		el: '#site-content',
-		tagName: 'div',
-		className: 'editor',
-
-		template: ($('#tpl-editor').html()),
-
-		events: {
-			'keyup': 'changeText',
-		},
-
-		initialize: function() {
-			console.log("editor view made");
-			this.render();
-
-			console.log(this.model.get("contents"));
-
-			this.editor_pane = $("#editor");
-			this.preview_pane = $("#preview");
-		},
-
-		changeText: function() {
-			console.log("keyup triggered");
-			this.model.set("contents", this.editor_pane.html());
-
-			this.preview_pane.html(this.editor_pane.html());
-		},
-
-		render: function() {
-			//rendered = Mustache.to_html(view.template, view.model.toJSON());
-			rendered = Mustache.to_html(this.template, this.model.toJSON());
-			$(this.el).html(rendered);
-		},
-	});
-
+	// var index = new IndexView;
 	var router = new Router;
-	var post = new PostModel;
-	var editor = new EditorView({model: post});
+
+	Backbone.history.start();
 });
