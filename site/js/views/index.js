@@ -5,8 +5,6 @@ define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone
 		className: 'index',
 
 		initialize: function() {
-			console.log("Index View Created");
-
 			var self = this;
 			$.get('templates/index.html', function(response) {
 				self.template = response;

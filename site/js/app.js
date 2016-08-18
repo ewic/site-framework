@@ -21,29 +21,30 @@ require.config({
 });
 
 define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone, Mustache) {
-	var self = this;
-
 	var Router = Backbone.Router.extend({
 		// App routes
 		routes: {
 			"editor": "editor",
+			"contact": "contact",
 			"*path": "defaultRoute",
 		},
 
 		editor: function() {
-			console.log("Editor");
-
 			this.set_title("Editor");
 
 			require(['js/views/editor', 'js/models/post'], function(EditorView, PostModel) {
 				var post = new PostModel;
-				self.view = new EditorView({model: post});
+				var editor = new EditorView({model: post});
+			});
+		},
+
+		contact: function() {
+			require(['js/views/contact'], function() {
+				var contact = new ContactView;
 			});
 		},
 
 		defaultRoute: function() {
-			console.log("defaultRoute");
-
 			require(['js/views/nav'], function(NavView) {
 				var nav = new NavView;
 			});
