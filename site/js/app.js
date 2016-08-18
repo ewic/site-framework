@@ -25,7 +25,7 @@ define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone
 		// App routes
 		routes: {
 			"editor": "editor",
-			"contact": "contact",
+			"about": "about",
 			"*path": "defaultRoute",
 		},
 
@@ -38,17 +38,13 @@ define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone
 			});
 		},
 
-		contact: function() {
-			require(['js/views/contact'], function() {
-				var contact = new ContactView;
+		about: function() {
+			require(['js/views/about'], function(AboutView) {
+				var about = new AboutView;
 			});
 		},
 
 		defaultRoute: function() {
-			require(['js/views/nav'], function(NavView) {
-				var nav = new NavView;
-			});
-
 			require(['js/views/index'], function(IndexView) {
 				var index = new IndexView;
 			});
@@ -60,7 +56,11 @@ define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone
 		}
 	});
 
-	// var index = new IndexView;
+	//Create the navbar
+	require(['js/views/nav'], function(NavView) {
+		var nav = new NavView;
+	});
+
 	var router = new Router;
 
 	Backbone.history.start();
