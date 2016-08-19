@@ -20,7 +20,7 @@ require.config({
 	}
 });
 
-define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone, Mustache) {
+require(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone, Mustache) {
 	var Router = Backbone.Router.extend({
 		// App routes
 		routes: {
@@ -39,6 +39,8 @@ define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone
 		},
 
 		about: function() {
+			this.set_title("About");
+
 			require(['js/views/about'], function(AboutView) {
 				var about = new AboutView;
 			});
@@ -55,13 +57,11 @@ define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone
 			$('title').html(title+' | ewic.us');
 		}
 	});
+	var router = new Router;
+	Backbone.history.start();
 
 	//Create the navbar
 	require(['js/views/nav'], function(NavView) {
 		var nav = new NavView;
 	});
-
-	var router = new Router;
-
-	Backbone.history.start();
 });
