@@ -67,6 +67,10 @@ The paths are defined so that we don't have to explicitly write out the complete
 
 The MV architecture is created using a series of Backbone Models and Views. 
 
+### Model-View-Whatever
+
+The model-view framework is pretty common in the world of web applications now, but I figured I would take a moment to point out that this entire framework does not include a controller of any kind, to handle business logic.  Instead the models and views will have to handle some of that.  This does break a standard of MVC, where the Model is supposed to only be a representation of a database item and the View is only supposed to handle logic associated with appearance.  Transformation and processing of data should be handled in some kind of Controller.  We are forgoing that in favor of simplicity.  If you are building a more robust application that where a large amount of data processing and transformation is to occur, it would make sense to add in some type of controller, although I would probably not build it in Javascript. 
+
 ### Backbone Routing
 
 Routing is handled in the main `app.js` file.  I chose not to seperate out the router into its own file because it seemed unnecessary for something so simple.
@@ -110,7 +114,7 @@ Unfortunately, the view itself will *still* be unable to render itself directly 
 
 For typical content, I have chosen to create a `<div id="site-content">` element in the primary index.html file, whose contents are empty.  When a view is loaded, the render function will be able to set the contents of `$('#site-content')` to the rendered view.  
 
-### Mustache templating.
+### Mustache templating
 
 For a static page, it is as simple as described above.  For a page with content loaded dynamically from the server, I chose to use MustacheJS to render content.  MustacheJS is a logic-free templating system.  It **only** resolves variables to their values.  All logical operations must still be done in Backbone.
 
@@ -138,6 +142,10 @@ When the above two are loaded as arguments to `Mustache.to_html(template, data)`
 <p>This is the contents to a paragraph"</p>
 ```
 
-### Backbone-Mustache conntection
+### Backbone-Mustache connection
 
 I have elected to render Backbone model data by using Backbone's `Backbone.Model.toJSON()` method to resolve a Backbone model to a JSON object and feed that object to the second argument of `Mustache.to_html(template, data)`.  This means the model can retrieve its data from the server, perform whatever math or functions it need on that data, then pass itself as a JSON object to Mustache to be rendered.
+
+## Databasing
+
+`TODO`
