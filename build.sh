@@ -6,6 +6,9 @@ mkdir -p ./site/lib/js/
 
 cp ./node_modules/bootstrap/dist/js/bootstrap.min.js ./site/lib/js/
 cp ./node_modules/jquery/dist/jquery.min.js ./site/lib/js/
+cp ./node_modules/backbone/backbone-min.js ./site/lib/js/
+cp ./node_modules/backbone/backbone-min.map ./site/lib/js/
+cp ./node_modules/requirejs/require.js ./site/lib/js/
 
 echo "JS Deployed"
 
