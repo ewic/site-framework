@@ -2,6 +2,11 @@
  * Base structure
  */
 
+@font-face {
+ font-family: 'icomoon';
+  src: url(images/fonts/IcoMoon-Free.ttf);
+}
+
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
@@ -9,4 +14,37 @@ body {
 
 .site-content {
   height: 100%;
+}
+
+.profile a {
+	color: #333;
+}
+
+.profile a:hover {
+	color: #333;
+	text-decoration: none;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+.profile-left {
+	text-align: right;
+}
+.profile-center {
+	text-align: center;
+}
+.profile-right {
+	text-align: left;
+}
+
+.profile-image-lg {
+	border: 5px solid white;
+	height: 128px;
+}
+
+.profile-icon-social {
+	margin-left: 8px;
+	font-size: 32px;
 }
