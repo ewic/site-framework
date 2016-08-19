@@ -1,3 +1,4 @@
+//Nav View
 define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone, Mustache) {
 	return Backbone.View.extend({
 		el: 'nav',

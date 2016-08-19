@@ -1,3 +1,4 @@
+//Router
 define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone, Mustache) {
 	return Backbone.Router.extend({
 		// App routes
@@ -13,6 +14,8 @@ define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone
 
 			require(['js/views/blog', 'js/collections/blog'], function(BlogView, BlogCollection) {
 				//A blog is just a collection of posts!
+				var blogCollection = new BlogCollection;
+				var blog = new BlogView({collection: blogCollection});
 			});
 		}
 

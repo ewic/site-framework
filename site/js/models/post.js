@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone, Mustache) {
+define(['jquery', 'underscore', 'backbone', 'mustache', 'mongoose'], function($, _, Backbone, Mustache) {
 	return Backbone.Model.extend({
 		defaults: {
 			date: Date.now(),
