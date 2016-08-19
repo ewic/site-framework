@@ -12,21 +12,30 @@ body {
   padding-top: 50px;
 }
 
-.site-content {
+#site-content {
   height: 100%;
+  color: #ddd;
+  background-color:#333;
+  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+  box-shadow: inset 0 0 100px rgba(0,0,0,.5);
 }
 
+
 .profile a {
-	color: #333;
+	color: #ddd;
 }
 
 .profile a:hover {
-	color: #333;
+	color: #ddd;
 	text-decoration: none;
 }
 
 .img-circle {
   border-radius: 50%;
+}
+
+.profile-jumbotron {
+	background-color:rgba(0, 0, 0, 0);
 }
 
 .profile-left {
@@ -40,7 +49,7 @@ body {
 }
 
 .profile-image-lg {
-	border: 5px solid white;
+	border: 5px solid #ddd;
 	height: 128px;
 }
 

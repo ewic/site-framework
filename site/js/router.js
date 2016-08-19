@@ -17,7 +17,7 @@ define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone
 				var blogCollection = new BlogCollection;
 				var blog = new BlogView({collection: blogCollection});
 			});
-		}
+		},
 
 		editor: function() {
 			this.set_title("Editor");
