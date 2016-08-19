@@ -7,7 +7,7 @@ define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone
 		data: {
 			items: [
 				{'link': '#', 'name': 'Home'},
-				{'link': '#editor', 'name': 'Editor'},
+				{'link': '#blog', 'name': 'Blog'},
 				{'link': '#about', 'name': 'About'},
 			]
 		},

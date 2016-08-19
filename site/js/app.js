@@ -21,47 +21,14 @@ require.config({
 });
 
 require(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone, Mustache) {
-	var Router = Backbone.Router.extend({
-		// App routes
-		routes: {
-			"editor": "editor",
-			"about": "about",
-			"*path": "defaultRoute",
-		},
-
-		editor: function() {
-			this.set_title("Editor");
-
-			require(['js/views/editor', 'js/models/post'], function(EditorView, PostModel) {
-				var post = new PostModel;
-				var editor = new EditorView({model: post});
-			});
-		},
-
-		about: function() {
-			this.set_title("About");
-
-			require(['js/views/about'], function(AboutView) {
-				var about = new AboutView;
-			});
-		},
-
-		defaultRoute: function() {
-			require(['js/views/index'], function(IndexView) {
-				var index = new IndexView;
-			});
-		},
-
-		set_title: function(title) {
-			$('.navbar-brand').html(title);
-			$('title').html(title+' | ewic.us');
-		}
+	require(['js/router.js'], function(Router) {
+		var router = new Router;
+		Backbone.history.start();
 	});
-	var router = new Router;
-	Backbone.history.start();
 
 	//Create the navbar
 	require(['js/views/nav'], function(NavView) {
 		var nav = new NavView;
 	});
+	
 });
