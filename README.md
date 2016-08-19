@@ -2,7 +2,7 @@
 
 This is a basic site framework.  Please see examples for all the bootstrap examples you need to html your stuff.
 
-## Requirememnts
+## Requirements
 
 * NodeJS and NPM
 * MongoDB
