@@ -5,8 +5,6 @@ define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone
 		className: 'about',
 
 		initialize: function() {
-			console.log('about view created');
-
 			var self = this;
 			$.get('templates/about.html', function(response) {
 				self.template = response;
