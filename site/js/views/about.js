@@ -1,4 +1,4 @@
-define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone, Mustache) {
+define(['jquery', 'underscore', 'backbone', 'mustache', 'jquery.couch'], function($, _, Backbone, Mustache) {
 	return Backbone.View.extend({
 		el: '#site-content',
 		tagName: 'div',
@@ -11,6 +11,15 @@ define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone
 
 				self.render();
 			});
+
+			// console.log($.couch.allDbs());
+			$.getJSONP('http://localhost:5984', {
+			  key: 'value',
+			  otherKey: 'otherValue'
+			}, function(data){
+			     // Handles the callback when the data returns
+			});
+
 		},
 
 		render: function() {

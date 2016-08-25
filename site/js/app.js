@@ -15,6 +15,7 @@ require.config({
 		'underscore': 'lib/js/underscore-min',
 		'backbone': 'lib/js/backbone-min',
 		'mustache': 'lib/js/mustache.min',
+		'jquery.couch': 'lib/js/jquery.couch',
 
 		'bootstrap': 'lib/js/bootstrap.min',
 	}

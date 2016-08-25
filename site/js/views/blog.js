@@ -1,5 +1,5 @@
 //Blog View
-define(['jquery', 'underscore', 'backbone', 'mustache', 'js/models/post'], function($, _, Backbone, Mustache, PostModel) {
+define(['jquery', 'underscore', 'backbone', 'mustache', 'js/models/post', 'jquery.couch'], function($, _, Backbone, Mustache, PostModel) {
 	return Backbone.View.extend({
 		el: '#site-content',
 		tagName: 'div',
@@ -11,7 +11,7 @@ define(['jquery', 'underscore', 'backbone', 'mustache', 'js/models/post'], funct
 		initialize: function() {
 			var self = this;
 
-			$.get('templates/editor.html', function(response){
+			$.get('templates/blog.html', function(response){
 				self.template = response;
 
 				self.render();
@@ -19,9 +19,7 @@ define(['jquery', 'underscore', 'backbone', 'mustache', 'js/models/post'], funct
 		},
 
 		render: function() {
-			//rendered = Mustache.to_html(view.template, view.model.toJSON());
-			rendered = Mustache.to_html(this.template, this.model.toJSON());
-			$(this.el).html(rendered);
+			$(this.el).html(this.template);
 		},
 	});
 });
