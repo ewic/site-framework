@@ -12,5 +12,9 @@ define(['jquery', 'underscore', 'backbone', 'mustache'], function($, _, Backbone
 			//Init the post model by retrieving the post data from the server
 			// and loading it into the model.
 		},
+
+		save: function() {
+			console.log(this.toJSON());
+		}
 	});
 });

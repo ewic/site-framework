@@ -1,0 +1,57 @@
+var config = require('./config.js');
+var url = config.database.uri + ':' + config.database.port;
+var nano = require('nano')(url);
+
+var cookies = {};
+
+exports.save = function(doc, dbname, callback) {
+	var db = nano.use(dbname);
+	db.insert(doc, function() {
+		console.log('Doc inserted!');
+	});
+};
+
+exports.delete = function(id, dbname) {
+	var db = nano.use(dbname);
+	db.destroy(id, function() {
+		console.log('Doc with id = '+id+' removed!');
+	}) 
+};
+
+exports.getPost = function(id) {
+	console.log("getPost");
+	// return get('blog', id);
+	return id;
+}
+
+exports.reset = function(dbname) {
+	console.log("RESETTING "+dbname);
+
+	var blog = config.credentials.blog;
+
+	nano.auth(blog.username, blog.password, function(err, body, headers) {
+		if (err) {
+			return callback(err);
+		}
+
+		if (headers && headers['set-cookie']) {
+			cookies[user] = headers['set-cookie'];
+		}
+
+		console.log("Auth made");
+	});
+
+	nano.db.destroy(dbname, function(response) {
+		console.log("Destroy called");
+	});
+	nano.db.create(dbname, function(response) {
+		console.log("Create called");
+	});
+};
+
+function get(dbname, id) {
+	var db = nano.use(db);
+	db.get(id, function(err, body) {
+		return body;
+	} );
+};

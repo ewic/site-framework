@@ -12,12 +12,14 @@ define(['jquery', 'underscore', 'backbone', 'mustache', 'jquery.couch'], functio
 				self.render();
 			});
 
-			// console.log($.couch.allDbs());
-			$.getJSONP('http://localhost:5984', {
-			  key: 'value',
-			  otherKey: 'otherValue'
-			}, function(data){
-			     // Handles the callback when the data returns
+			var data = {
+				db: 'blog',
+				collection: 'posts',
+				doc: JSON.stringify( {test7: true} )
+			};
+
+			$.post('/insert', data, function(response) {
+				console.log(response);
 			});
 
 		},

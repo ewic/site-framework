@@ -5,13 +5,17 @@ module.exports = {
 	},
 
 	database: {
-		uri: 'https://localhost:27017',
-		port: 8000,
-		credentials: {
-			mongoose_auth: {
-				user: 'ewic',
-				pass: 'testpassword'
-			}
-		}
+		// uri: 'http://localhost',
+		// port: 5984
+		// },
+		// credentials: {
+		// 	blog: {
+		// 		username: 'blog',
+		// 		password: 'hawe6A2A_aHA'
+		// 	}
+		// }
+		uri: 'mongodb://localhost',
+		port: 27017,
+		credentials: {}
 	}
 }
