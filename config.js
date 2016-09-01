@@ -4,6 +4,10 @@ module.exports = {
 		port: 8080,
 	},
 
+	blog: {
+		root: './blog'
+	},
+
 	database: {
 		uri: 'https://localhost:27017',
 		port: 8000,
